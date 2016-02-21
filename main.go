@@ -20,14 +20,13 @@ func runCmd(wd, app string, args ...string) bool {
 
 	output, err := cmd.CombinedOutput()
 	if err != nil {
-		fmt.Println("=========================================")
 		fmt.Println("███████╗██████╗ ██████╗  ██████╗ ██████╗ ")
 		fmt.Println("██╔════╝██╔══██╗██╔══██╗██╔═══██╗██╔══██╗")
 		fmt.Println("█████╗  ██████╔╝██████╔╝██║   ██║██████╔╝")
 		fmt.Println("██╔══╝  ██╔══██╗██╔══██╗██║   ██║██╔══██╗")
 		fmt.Println("███████╗██║  ██║██║  ██║╚██████╔╝██║  ██║")
 		fmt.Println("╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝")
-		fmt.Println("GIT had this to say:")
+		fmt.Println("GIT had this to say: " + err.Error())
 		fmt.Println("=========================================")
 		fmt.Printf("%s", output)
 		fmt.Println("=========================================")
