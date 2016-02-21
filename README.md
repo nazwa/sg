@@ -1,0 +1,2 @@
+# sg
+Simple GIT
