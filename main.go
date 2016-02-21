@@ -65,7 +65,7 @@ func main() {
 	if !runCmd(cwd, "git", "add", "-A") {
 		return
 	}
-	if !runCmd(cwd, "git", "commit", "-am\""+message) {
+	if !runCmd(cwd, "git", "commit", "-am"+message) {
 		return
 	}
 	if !runCmd(cwd, "git", "pull") {
