@@ -20,11 +20,12 @@ func runCmd(wd, app string, args ...string) bool {
 
 	output, err := cmd.CombinedOutput()
 	if err != nil {
-		fmt.Println("\n==============================\n")
-		fmt.Println("\nError :( git had this to say: \n")
-		fmt.Println("\n==============================\n")
+		fmt.Println("=============================")
+		fmt.Println("Error :( git had this to say:")
+		fmt.Println("=============================")
 		fmt.Printf("%s", output)
-		fmt.Println("\n==============================\n")
+		fmt.Println("=============================")
+		return false
 	}
 	return true
 }
@@ -42,7 +43,7 @@ func main() {
 		message = strings.Join(words, " ")
 	}
 
-	if !runCmd(cwd, "git", "-A") {
+	if !runCmd(cwd, "git", "add", "-A") {
 		return
 	}
 	if !runCmd(cwd, "git", "commit", "-am\""+message) {
