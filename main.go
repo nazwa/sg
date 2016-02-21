@@ -19,6 +19,15 @@ func isInGit(wd string) bool {
 	return len(output) == 0 && err == nil
 }
 
+func printErrorTitle() {
+	fmt.Println("███████╗██████╗ ██████╗  ██████╗ ██████╗ ")
+	fmt.Println("██╔════╝██╔══██╗██╔══██╗██╔═══██╗██╔══██╗")
+	fmt.Println("█████╗  ██████╔╝██████╔╝██║   ██║██████╔╝")
+	fmt.Println("██╔══╝  ██╔══██╗██╔══██╗██║   ██║██╔══██╗")
+	fmt.Println("███████╗██║  ██║██║  ██║╚██████╔╝██║  ██║")
+	fmt.Println("╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝")
+}
+
 func runCmd(wd, app string, args ...string) bool {
 	cmd := exec.Command(app, args...)
 	cmd.Dir = wd
@@ -29,14 +38,7 @@ func runCmd(wd, app string, args ...string) bool {
 			fmt.Println("Nothing to commit...")
 			return true
 		}
-
-		fmt.Println("███████╗██████╗ ██████╗  ██████╗ ██████╗ ")
-		fmt.Println("██╔════╝██╔══██╗██╔══██╗██╔═══██╗██╔══██╗")
-		fmt.Println("█████╗  ██████╔╝██████╔╝██║   ██║██████╔╝")
-		fmt.Println("██╔══╝  ██╔══██╗██╔══██╗██║   ██║██╔══██╗")
-		fmt.Println("███████╗██║  ██║██║  ██║╚██████╔╝██║  ██║")
-		fmt.Println("╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝")
-		fmt.Println(strings.Join(args, " "))
+		printErrorTitle()
 		fmt.Println("GIT had this to say: " + err.Error())
 		fmt.Println("=========================================")
 		fmt.Printf("%s", output)
@@ -49,6 +51,7 @@ func runCmd(wd, app string, args ...string) bool {
 func main() {
 	cwd, _ := os.Getwd()
 	if !isInGit(cwd) {
+		printErrorTitle()
 		fmt.Println("This is not a git repo :(")
 		return
 	}
