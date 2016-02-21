@@ -26,6 +26,7 @@ func runCmd(wd, app string, args ...string) bool {
 		fmt.Println("██╔══╝  ██╔══██╗██╔══██╗██║   ██║██╔══██╗")
 		fmt.Println("███████╗██║  ██║██║  ██║╚██████╔╝██║  ██║")
 		fmt.Println("╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝")
+		fmt.Println(strings.Join(args, " "))
 		fmt.Println("GIT had this to say: " + err.Error())
 		fmt.Println("=========================================")
 		fmt.Printf("%s", output)
