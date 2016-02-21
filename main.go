@@ -4,7 +4,12 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"regexp"
 	"strings"
+)
+
+var (
+	regNothingToCommit = regexp.MustCompile("nothing to commit")
 )
 
 func isInGit(wd string) bool {
@@ -20,6 +25,11 @@ func runCmd(wd, app string, args ...string) bool {
 
 	output, err := cmd.CombinedOutput()
 	if err != nil {
+		if regNothingToCommit.Match(output) {
+			fmt.Println("Nothing to commit...")
+			return true
+		}
+
 		fmt.Println("███████╗██████╗ ██████╗  ██████╗ ██████╗ ")
 		fmt.Println("██╔════╝██╔══██╗██╔══██╗██╔═══██╗██╔══██╗")
 		fmt.Println("█████╗  ██████╔╝██████╔╝██║   ██║██████╔╝")
